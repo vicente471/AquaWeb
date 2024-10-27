@@ -1,0 +1,88 @@
+CREATE TABLE TipoUsuario (
+    TIPOUS_ID INT PRIMARY KEY AUTO_INCREMENT,
+    TIPOUS_DESC VARCHAR(20));
+
+INSERT INTO TipoUsuario (TIPOUS_ID, TIPOUS_DESC)
+ values (1, 'Administrador');
+
+INSERT INTO TipoUsuario (TIPOUS_ID, TIPOUS_DESC)
+ values (2, 'Cliente');
+
+INSERT INTO TipoUsuario (TIPOUS_ID, TIPOUS_DESC)
+ values (3, 'Repartidor'); 
+
+UPDATE tipousuario SET TIPO_ID = 0 WHERE TIPO_ID = 1;
+UPDATE tipousuario SET TIPO_ID = 1 WHERE TIPO_ID = 2;
+UPDATE tipousuario SET TIPO_ID = 2 WHERE TIPO_ID = 3;
+
+CREATE TABLE DIRECCION (
+    DIR_ID INT PRIMARY KEY AUTO_INCREMENT,
+    DIR_CALLE VARCHAR(100),
+    DIR_NUM VARCHAR(5),
+    DIR_COMUNA VARCHAR(50)
+);
+
+
+CREATE TABLE USUARIO (
+    US_id INT PRIMARY KEY ,
+    US_pass VARCHAR(15),
+    US_mail VARCHAR(40),
+    TIPOUS_ID INT,
+    US_fono VARCHAR(11),
+    US_nombre VARCHAR(15),
+    US_apellido VARCHAR(15),
+    DIR_id INT,
+     FOREIGN KEY(TIPOUS_ID) REFERENCES TipoUsuario(TIPOUS_ID),
+    FOREIGN KEY(DIR_id) REFERENCES DIRECCION(DIR_ID)
+);
+
+CREATE TABLE COMPRA (
+    COM_id INT PRIMARY KEY AUTO_INCREMENT,
+    COM_estado VARCHAR(50),
+    COM_numprod INT,
+    US_id INT,
+    COM_fecha DATE,
+    COM_preciototal INT,
+    FOREIGN KEY (US_id) REFERENCES USUARIO(US_id)
+);
+
+CREATE TABLE Tipo_Bidon (
+    TIPOBID_id INT PRIMARY KEY AUTO_INCREMENT,
+    TIPOBID_desc VARCHAR(20)
+);
+
+INSERT INTO Tipo_Bidon (TIPOBID_id, TIPOBID_desc)
+ values (1, 'Redondo, Plástico duro');
+
+INSERT INTO Tipo_Bidon (TIPOBID_id, TIPOBID_desc)
+ values (2, 'Redondo, Plástico reciclable');
+
+INSERT INTO Tipo_Bidon (TIPOBID_id, TIPOBID_desc)
+ values (3, 'Cuadrado, Plástico');
+
+CREATE TABLE BIDON (
+    BID_ID INT AUTO_INCREMENT,
+    BID_nom VARCHAR(22),
+    BID_fechaprice DATE,
+    BID_litros int,
+    BID_precio int,
+    BID_stock INT,
+    BID_cantVAL int,
+    BID_val int,
+    TIPOBID_id int,
+    BID_imagen_url VARCHAR(255),
+    FOREIGN KEY (TIPOBID_id) REFERENCES tipo_Bidon(TIPOBID_id),
+    PRIMARY KEY (BID_ID, BID_fechaprice)
+
+);
+
+CREATE TABLE COM_BID (
+    COM_COMID INT,
+    COM_BIDFECHA DATE,
+    COM_BIDID INT,
+    COM_CANTIDAD INT,
+    PRIMARY KEY (COM_COMID, COM_BIDID, COM_BIDFECHA),
+    FOREIGN KEY (COM_COMID) REFERENCES COMPRA(COM_id),
+    FOREIGN KEY (COM_BIDID, COM_BIDFECHA) REFERENCES BIDON(BID_ID, BID_fechaprice)
+
+);

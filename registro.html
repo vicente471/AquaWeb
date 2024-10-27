@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro-AquaWeb</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="cuerpo">
+    <header>
+        <div class="logo">
+            <img src="./images/Logo.jpg" alt="AquaWeb Logo">
+            <h1>AquaWeb</h1>
+        </div>
+        <div class="Espacio_nav">
+            <nav>
+                <a href="index.php" class="NavnoActive">Home</a>
+                <a href="catalogo.php" class="NavnoActive">Catálogo</a>
+                <a href="seguimiento.php" class="NavnoActive">Seguimiento</a>
+                <a href="ingreso.html" class="NavActive">Ingreso</a>
+            </nav>
+        </div>
+    </header>
+    <div class="ingreso">
+        <h1>CREAR UNA CUENTA</h1>
+        <h2>Estas Registrado? <a href="ingreso.html">Login</a></h2> 
+        <form action="backend.php" method="POST">
+            <h3>NOMBRE</h3>  
+            <input type="text" id="name" name="nombre" required placeholder="Tu Nombre">
+
+            <h3>APELLIDO</h3>  
+            <input type="text" id="name" name="apellido" required placeholder="Tu apellido">
+
+            <h3>TELÉFONO</h3>  
+            <input type="tel" id="telefono" name="telefono" pattern="9[1-9][0-9]{7}" placeholder="Ej. 912345678">
+            
+            <h3>DIRECCIÓN </h3>  
+            <input type="text" id="name" name="calle" required placeholder="Tu direccion">
+            
+            <h3>NÚMERO DE DIRECCIÓN</h3>  
+            <input type="tel" id="telefono" name="direccionnum" pattern="[1-9][0-9]*" placeholder="Ej. 1234">
+            
+            <h3>COMUNA</h3>  
+            <select id="name" name="comuna" required>
+                <option value="" disabled selected>Selecciona tu comuna</option>
+                <option value="Cerrillos">Cerrillos</option>
+                <option value="Cerro Navia">Cerro Navia</option>
+                <option value="Conchalí">Conchalí</option>
+                <option value="Estación Central">Estación Central</option>
+                <option value="Huechuraba">Huechuraba</option>
+                <option value="Independencia">Independencia</option>
+                <option value="La Cisterna">La Cisterna</option>
+                <option value="La Florida">La Florida</option>
+                <option value="La Granja">La Granja</option>
+                <option value="La Pintana">La Pintana</option>
+                <option value="El Bosque">El Bosque</option>
+                <option value="La Reina">La Reina</option>
+                <option value="Las Condes">Las Condes</option>
+                <option value="Lo Barnechea">Lo Barnechea</option>
+                <option value="Lo Espejo">Lo Espejo</option>
+                <option value="Lo Prado">Lo Prado</option>
+                <option value="Macul">Macul</option>
+                <option value="Maipú">Maipú</option>
+                <option value="Ñuñoa">Ñuñoa</option>
+                <option value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</option>
+                <option value="Peñalolén">Peñalolén</option>
+                <option value="Providencia">Providencia</option>
+                <option value="Pudahuel">Pudahuel</option>
+                <option value="Puente Alto">Puente Alto</option>
+                <option value="Quilicura">Quilicura</option>
+                <option value="Quinta Normal">Quinta Normal</option>
+                <option value="Recoleta">Recoleta</option>
+                <option value="Renca">Renca</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="San Ramón">San Ramón</option>
+                <option value="Santiago">Santiago</option>
+            </select>
+
+            <h3>EMAIL</h3> 
+            <input type="email" id="email" name="email" required placeholder="tu_correo@gmail.com">
+            
+            <h3>CONTRASEÑA</h3>  
+            <input type="password" id="contrasena" name="contrasena" required placeholder="**********"> 
+
+            
+            <button type="submit" name="registro">Registrarse</button>
+        </form>
+    </div>
+    <footer class="footer">
+    </footer>
+</body>
+</html>
